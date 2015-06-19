@@ -12,13 +12,21 @@ html
         .cols-xs-12
           ul.nav.nav-pills
             li role="presentation"
+              a href=root_path Home
+            li role="presentation"
+              a href=saved_videos_path
+                | Saved Videos
+                - if current_user.saved_videos_count > 0
+                  span.badge = current_user.saved_videos_count
+            li role="presentation"
               a href=new_video_path Add Video
             li role="presentation"
-              - if user_signed_in?
+              - if current_user.registered?
                 a href=destroy_user_session_path data-method="delete"
                   | Log out
               - else
-                a href=new_user_session_path Log In
+                a href=new_user_session_path
+                  | Log In
       .row
         .cols-xs-12
           - if notice

@@ -44,7 +44,7 @@ class VideosController < ApplicationController
   def save
     @video = Video.find(params[:id])
 
-    current_user.saved_videos.create!(video: @video)
+    current_user.save_for_later(@video)
     flash.notice = 'Video saved for later.'
 
     respond_to do |format|
