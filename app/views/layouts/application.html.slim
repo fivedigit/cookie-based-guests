@@ -2,10 +2,27 @@ doctype html
 html
   head
     title Videos
-    = stylesheet_link_tag    'application', media: 'all',
+    = stylesheet_link_tag 'application', media: 'all',
       'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
     .container
+      .row
+        .cols-xs-12
+          ul.nav.nav-pills
+            li role="presentation"
+              a href=new_video_path Add Video
+            li role="presentation"
+              - if user_signed_in?
+                a href=destroy_user_session_path data-method="delete"
+                  | Log out
+              - else
+                a href=new_user_session_path Log In
+      .row
+        .cols-xs-12
+          - if notice
+            .alert.alert-info = notice
+          - if alert
+            .alert.alert-warning = alert
       = yield

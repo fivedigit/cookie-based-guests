@@ -41,6 +41,17 @@ class VideosController < ApplicationController
     end
   end
 
+  def save
+    @video = Video.find(params[:id])
+
+    current_user.saved_videos.create!(video: @video)
+    flash.notice = 'Video saved for later.'
+
+    respond_to do |format|
+      format.html { redirect_to(action: :index) }
+    end
+  end
+
   private
 
   def video_params

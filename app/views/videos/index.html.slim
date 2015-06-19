@@ -1,16 +1,15 @@
 .row
   .cols-xs-12
-    ul.nav.nav-pills
-      li role="presentation"
-        a href=new_video_path Add Video
-
-.row
-  .cols-xs-12
     h1 Available Videos
 
     table.table.table-striped
       - @videos.each do |video|
         tr
           td = video.name
+          td
+            - if current_user.saved_for_later?(video)
+             | Saved for later
+            - else
+              a href=save_video_path(video) data-method="post" Watch later
           td
             a href=edit_video_path(video) Edit
