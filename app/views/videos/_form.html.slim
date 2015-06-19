@@ -1,0 +1,9 @@
+= form_for(video) do |f|
+  ul
+  - video.errors.full_messages.each do |message|
+    li = message
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.submit class: 'btn btn-primary'

@@ -1,0 +1,16 @@
+.row
+  .cols-xs-12
+    ul.nav.nav-pills
+      li role="presentation"
+        a href=new_video_path Add Video
+
+.row
+  .cols-xs-12
+    h1 Available Videos
+
+    table.table.table-striped
+      - @videos.each do |video|
+        tr
+          td = video.name
+          td
+            a href=edit_video_path(video) Edit
