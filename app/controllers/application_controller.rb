@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     super || guest_user
   end
 
+  def user_signed_in?
+    current_user.registered?
+  end
+
   private
 
   def guest_user
