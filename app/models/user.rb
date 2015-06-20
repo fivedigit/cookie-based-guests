@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   has_many :saved_videos
 
-  delegate :count, to: :saved_videos, prefix: true
-
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :validatable
 
@@ -11,7 +9,7 @@ class User < ActiveRecord::Base
   end
 
   def saved_for_later?(video)
-    saved_videos.where(id: video).exists?
+    saved_videos.for_video(video).exists?
   end
 
   def save_for_later(video)

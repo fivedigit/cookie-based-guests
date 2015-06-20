@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'videos#index'
 
   resources :videos do
-    post :save, on: :member
+    resource :saved_video, only: [:create, :destroy]
   end
 
   resources :saved_videos, only: :index

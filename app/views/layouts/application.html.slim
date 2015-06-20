@@ -16,8 +16,8 @@ html
             li role="presentation"
               a href=saved_videos_path
                 | Saved Videos
-                - if current_user.saved_videos_count > 0
-                  span.badge = current_user.saved_videos_count
+                - if current_user.saved_videos.size > 0
+                  span.badge = current_user.saved_videos.size
             li role="presentation"
               a href=new_video_path Add Video
             li role="presentation"

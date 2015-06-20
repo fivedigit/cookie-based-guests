@@ -1,9 +1,6 @@
-tr
-  td = video.name
-  td
-    - if current_user.saved_for_later?(video)
-      span.label.label-primary On Watchlist
-    - else
-      a href=save_video_path(video) data-method="post" Watch later
-  td
-    a href=edit_video_path(video) Edit
+.video
+  h2 = video.name
+  - if current_user.saved_for_later?(video)
+    span.label.label-primary On Watchlist
+  - else
+    a href=video_saved_video_path(video) data-method="post" Watch later

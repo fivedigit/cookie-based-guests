@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :save]
+
   def index
     @videos = Video.all
 
@@ -38,17 +40,6 @@ class VideosController < ApplicationController
       else
         format.html { render('edit') }
       end
-    end
-  end
-
-  def save
-    @video = Video.find(params[:id])
-
-    current_user.save_for_later(@video)
-    flash.notice = 'Video saved for later.'
-
-    respond_to do |format|
-      format.html { redirect_to(action: :index) }
     end
   end
 
