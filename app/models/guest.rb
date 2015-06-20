@@ -18,4 +18,10 @@ class Guest
 
     saved_videos << video
   end
+
+  def destroy
+    saved_videos.destroy
+  end
+
+  alias_method :delete, :destroy
 end

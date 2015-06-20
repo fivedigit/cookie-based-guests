@@ -23,6 +23,10 @@ module Guests
       end
     end
 
+    def destroy
+      @store[:saved_for_later] = nil
+    end
+
     private
 
     def ids
